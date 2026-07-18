@@ -7,18 +7,26 @@ spring:
       server:
         webmvc:
           routes:
-          - id: order-service
+          - id: auth-service
             uri: lb://commerce-system
             predicates:
-              - Path=/api/orders/**
+              - Path=/api/auth/**
+
           - id: user-service
             uri: lb://commerce-system
             predicates:
               - Path=/api/users/**
+
           - id: password-service
             uri: lb://commerce-system
             predicates:
               - Path=/api/passwords/**
+
+          - id: order-service
+            uri: lb://commerce-system
+            predicates:
+              - Path=/api/orders/**
+
           - id: notification-service
             uri: lb://notification-service
             predicates:
